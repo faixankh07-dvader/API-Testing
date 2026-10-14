@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Task 6 - Newman Execution" tests="10" time="3.617">
+  <testsuite name="GET {{baseUrl}}/ping" id="6b1ba2dc-4ecf-42dc-affe-a501e13bdd38" timestamp="2026-10-14T17:19:44.747Z" tests="1" failures="0" errors="0" time="0.931">
+    <testcase name="API is up (201)" time="0.931" classname="GetBaseUrlPing"/>
+  </testsuite>
+  <testsuite name="POST {{baseUrl}}/auth, bad credentials" id="2b189af6-d956-4d59-8b02-cc165d66eacd" timestamp="2026-10-14T17:19:44.747Z" tests="1" failures="0" errors="0" time="0.231">
+    <testcase name="Bad credentials do not return a token" time="0.231" classname="PostBaseUrlAuthBadCredentials"/>
+  </testsuite>
+  <testsuite name="POST {{baseUrl}}/auth" id="a4453437-9548-49ef-b675-539d4da25ce3" timestamp="2026-10-14T17:19:44.747Z" tests="2" failures="0" errors="0" time="0.227">
+    <testcase name="Status 200" time="0.227" classname="PostBaseUrlAuth"/>
+    <testcase name="Token is a non-empty string" time="0.227" classname="PostBaseUrlAuth"/>
+  </testsuite>
+  <testsuite name="GET {{baseUrl}}/booking" id="268ca65d-9434-482c-bad1-9e4cf0ea96f6" timestamp="2026-10-14T17:19:44.747Z" tests="1" failures="0" errors="0" time="0.820">
+    <testcase name="Status 200" time="0.820" classname="GetBaseUrlBooking"/>
+  </testsuite>
+  <testsuite name="POST {{baseUrl}}/booking" id="b9b97643-0486-4166-bc27-af8f885f6752" timestamp="2026-10-14T17:19:44.747Z" tests="2" failures="0" errors="0" time="0.226">
+    <testcase name="Status 200" time="0.226" classname="PostBaseUrlBooking"/>
+    <testcase name="Booking created with correct data" time="0.226" classname="PostBaseUrlBooking"/>
+  </testsuite>
+  <testsuite name="GET {{baseUrl}}/booking/{{bookingId}}" id="c2a33bc9-18c8-4d1a-a43b-1fb8b4c2d4ac" timestamp="2026-10-14T17:19:44.747Z" tests="2" failures="0" errors="0" time="0.236">
+    <testcase name="Status 200" time="0.236" classname="GetBaseUrlBookingBookingId"/>
+    <testcase name="Fetched booking matches what was created" time="0.236" classname="GetBaseUrlBookingBookingId"/>
+  </testsuite>
+  <testsuite name="PUT {{baseUrl}}/booking/{{bookingId}}" id="6d226f19-7601-4552-b08e-790d26ebf34a" timestamp="2026-10-14T17:19:44.747Z" tests="2" failures="0" errors="0" time="0.227">
+    <testcase name="Status 200" time="0.227" classname="PutBaseUrlBookingBookingId"/>
+    <testcase name="Booking was updated" time="0.227" classname="PutBaseUrlBookingBookingId"/>
+  </testsuite>
+  <testsuite name="DELETE {{baseUrl}}/booking/{{bookingId}}" id="7914eb96-4f01-41c5-a0ab-e097317e8579" timestamp="2026-10-14T17:19:44.747Z" tests="1" failures="0" errors="0" time="0.241">
+    <testcase name="Delete without token is rejected (403)" time="0.241" classname="DeleteBaseUrlBookingBookingId"/>
+  </testsuite>
+  <testsuite name="DELETE {{baseUrl}}/booking/{{bookingId}}" id="aa1b140c-74dc-42ef-9fce-7fca03fe88e7" timestamp="2026-10-14T17:19:44.747Z" tests="1" failures="0" errors="0" time="0.248">
+    <testcase name="Status 201 (Created is what this API returns on delete)" time="0.248" classname="DeleteBaseUrlBookingBookingId"/>
+  </testsuite>
+  <testsuite name="GET {{baseUrl}}/booking/{{bookingId}}" id="f5afe8ba-2957-4257-9d1c-db16c2f4e7d9" timestamp="2026-10-14T17:19:44.747Z" tests="1" failures="0" errors="0" time="0.230">
+    <testcase name="Booking is gone (404)" time="0.230" classname="GetBaseUrlBookingBookingId"/>
+  </testsuite>
+</testsuites>

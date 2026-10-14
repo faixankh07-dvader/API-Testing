@@ -1,0 +1,51 @@
+firstname,lastname,totalprice,depositpaid,checkin,checkout,additionalneeds,expected_status,category
+Ali,Raza,100,true,2026-11-01,2026-11-05,Breakfast,200,valid
+Sara,Ahmed,125,false,2026-11-02,2026-11-06,Lunch,200,valid
+Hassan,Sheikh,150,true,2026-11-03,2026-11-07,Dinner,200,valid
+Ayesha,Malik,175,false,2026-11-04,2026-11-08,Parking,200,valid
+Usman,Qureshi,200,true,2026-11-05,2026-11-09,Late checkout,200,valid
+Fatima,Siddiqui,225,false,2026-11-06,2026-11-10,Extra bed,200,valid
+Bilal,Hussain,250,true,2026-11-07,2026-11-11,Airport pickup,200,valid
+Zainab,Khan,275,false,2026-11-08,2026-11-12,Wi-Fi,200,valid
+Omar,Farooq,300,true,2026-11-09,2026-11-13,None,200,valid
+Hira,Javed,325,false,2026-11-10,2026-11-14,Sea view,200,valid
+Daniel,Smith,350,true,2026-11-11,2026-11-15,Breakfast,200,valid
+Emma,Brown,375,false,2026-11-12,2026-11-16,Lunch,200,valid
+Liam,Johnson,400,true,2026-11-13,2026-11-17,Dinner,200,valid
+Olivia,Davis,425,false,2026-11-14,2026-11-18,Parking,200,valid
+Noah,Wilson,450,true,2026-11-15,2026-11-19,Late checkout,200,valid
+Mia,Taylor,475,false,2026-11-16,2026-11-20,Extra bed,200,valid
+Lucas,Moore,500,true,2026-11-17,2026-11-21,Airport pickup,200,valid
+Amelia,Clark,525,false,2026-11-18,2026-11-22,Wi-Fi,200,valid
+Ethan,Lewis,550,true,2026-11-19,2026-11-23,None,200,valid
+Sophia,Walker,575,false,2026-11-20,2026-11-24,Sea view,200,valid
+O'Brien,Connor,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+Zoë,Müller,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+José,Peña,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+علی,خان,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+张,伟,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+Emoji😀,Test,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+<script>alert(1)</script>,XSS,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+"A,B",Comma,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+"He said ""hi""",Quotes,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+Back\slash,Test,200,true,2026-12-01,2026-12-03,Special characters,200,special_chars
+' OR '1'='1,Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+'; DROP TABLE bookings;--,Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+""" OR """"=""",Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+admin'--,Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+1; SELECT * FROM users,Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+"' UNION SELECT NULL,NULL--",Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+1' AND SLEEP(5)--,Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+%27%20OR%201%3D1,Injection,300,false,2027-01-10,2027-01-12,SQL injection string,200,sql_injection
+Boundary,ZeroPrice,0,true,2027-02-01,2027-02-03,price 0,200,boundary
+Boundary,NegativePrice,-1,true,2027-02-01,2027-02-03,price -1,200,boundary
+Boundary,IntMax,2147483647,true,2027-02-01,2027-02-03,price int max,200,boundary
+Boundary,Huge,99999999999,true,2027-02-01,2027-02-03,price beyond int32,200,boundary
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,LongName,100,false,2027-02-01,2027-02-03,255-char firstname,200,boundary
+Boundary,SameDay,100,true,2027-02-01,2027-02-01,checkin equals checkout,200,boundary
+,EmptyFirst,100,true,2027-03-01,2027-03-03,empty firstname,200,invalid
+EmptyLast,,100,true,2027-03-01,2027-03-03,empty lastname,200,invalid
+Reversed,Dates,100,true,2027-03-10,2027-03-01,checkout before checkin,200,invalid
+BadDate,Format,100,true,not-a-date,2027-03-03,invalid checkin,200,invalid
+NoNeeds,Empty,100,true,2027-03-01,2027-03-03,,200,invalid
+   ,Whitespace,100,true,2027-03-01,2027-03-03,whitespace firstname,200,invalid
