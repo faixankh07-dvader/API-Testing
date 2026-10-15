@@ -1,6 +1,5 @@
 name: API Tests (Newman)
 
-# Run on every push and on pull requests
 on:
   push:
   pull_request:
@@ -8,6 +7,9 @@ on:
 jobs:
   api-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "Task 7"
 
     steps:
       - name: Check out repository
@@ -31,10 +33,9 @@ jobs:
             --reporter-htmlextra-title "Restful-Booker API Tests (CI)" \
             --reporter-junit-export reports/junit.xml
 
-      # Runs even when the tests fail, so the report is always available
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: newman-reports
-          path: reports/
+          path: "Task 7/reports/"
