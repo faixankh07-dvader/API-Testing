@@ -1,0 +1,41 @@
+name: API Tests (Newman)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "Task 7"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Newman and HTML reporter
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run API tests with Newman
+        run: |
+          mkdir -p reports
+          newman run "Task 6 - Newman Execution.postman_collection.json" \
+            -e Booker-Env.postman_environment.json \
+            -r cli,htmlextra,junit \
+            --reporter-htmlextra-export reports/report.html \
+            --reporter-htmlextra-title "Restful-Booker API Tests (CI)" \
+            --reporter-junit-export reports/junit.xml
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-reports
+          path: "Task 7/reports/"
