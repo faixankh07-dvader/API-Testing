@@ -22,6 +22,11 @@ jobs:
 
       - name: Install Newman and HTML reporter
         run: npm install -g newman newman-reporter-htmlextra
+      
+      - name: Check secret is present
+        env:
+          BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
+        run: echo "password length = ${#BOOKER_PASSWORD}"
 
       - name: Run API tests with Newman
         env:
