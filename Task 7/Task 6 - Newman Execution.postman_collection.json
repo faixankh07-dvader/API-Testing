@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "f9d503f3-7712-4427-955d-1e1a73fc54a1",
-    "name": "Task 8 - Performance SLA",
+    "_postman_id": "df0c914d-6a98-44c7-a93a-4458eb19867d",
+    "name": "Task 6 - Newman Execution",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "58765575",
-    "_collection_link": "https://go.postman.co/collection/58765575-f9d503f3-7712-4427-955d-1e1a73fc54a1?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/58765575-df0c914d-6a98-44c7-a93a-4458eb19867d?source=collection_link"
   },
   "item": [
     {
@@ -360,23 +360,6 @@
           "path": [
             "booking",
             "{{bookingId}}"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "POST {{baseUrl}}/booking",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/booking",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "booking"
           ]
         }
       },
