@@ -24,10 +24,13 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: Run API tests with Newman
+        env:
+          BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
         run: |
           mkdir -p reports
           newman run "Task 6 - Newman Execution.postman_collection.json" \
             -e Booker-Env.postman_environment.json \
+            --env-var "authPassword=$BOOKER_PASSWORD" \
             -r cli,htmlextra,junit \
             --reporter-htmlextra-export reports/report.html \
             --reporter-htmlextra-title "Restful-Booker API Tests (CI)" \
